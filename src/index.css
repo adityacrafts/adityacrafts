@@ -1,0 +1,88 @@
+/* slick-carousel styles */
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
+
+/* Tailwind base styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Tailwind-based styling for Slick Slider navigation buttons */
+.slick-prev,
+.slick-next {
+  @apply text-gray-400 transition-colors duration-200; /* Set gray color all the time */
+}
+
+.slick-prev::before,
+.slick-next::before {
+  @apply text-2xl font-bold; /* Make arrows larger and bold */
+}
+
+.slick-next {
+  @apply right-4; /* Adjust position */
+}
+
+.slick-prev {
+  @apply left-4; /* Adjust position */
+}
+
+/* Scrollbar styling */
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin; /* For Firefox */
+  }
+
+  .scrollbar-orange {
+    scrollbar-color: orange transparent; /* For Firefox */
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 8px; /* Thin scrollbar width for WebKit browsers */
+    height: 8px; /* Thin scrollbar height for horizontal scrollbars */
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent; /* Transparent track */
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: orange; /* Orange thumb */
+    border-radius: 4px; /* Rounded corners */
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: #ff8c00; /* Slightly darker orange on hover */
+  }
+}
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@1,600&display=swap");
+
+
+.line-dashed {
+  background: repeating-linear-gradient(
+      to bottom,
+      transparent 0 4px,
+      #0f9d58 4px 8px
+    )
+    80%/2px 100% no-repeat;
+}
+
+@layer base {
+  html,
+  body {
+    font-family: "Montserrat", sans-serif;
+    overflow-x: hidden;
+  }
+
+}
+@layer utilities {
+  @screen lg {
+    .text-lg {
+      font-size: 0.789rem;
+      line-height: 0.234rem;
+    }
+    .py-2 {
+      padding-top: 0.1rem;
+      padding-bottom: 0.1rem;
+    }
+  }
+}
