@@ -22,6 +22,8 @@ import gallery16 from "../../assets/gallery16.jpeg";
 import gallery17 from "../../assets/gallery17.jpeg";
 import gallery18 from "../../assets/gallery18.jpeg";
 import gallery20 from "../../assets/9.png";
+import galleryposter from "../../assets/galleryposter.png";
+import Footer from "../Footer/Footer";
 
 Modal.setAppElement("#root"); // Set the root element for accessibility
 
@@ -63,53 +65,61 @@ const Gallery = () => {
     };
 
     return (
-        <div className="w-full py-12 flex flex-col items-center mt-28">
-            <h2 className="text-3xl font-bold text-center mb-8">Gallery</h2>
-
-            {/* Gallery Container */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-6xl px-4">
-                {images.map((image) => (
-                    <div key={image.id} className="flex justify-center">
-                        <img
-                            src={image.src}
-                            alt={image.alt}
-                            className="w-96 h-72 object-cover rounded-lg shadow-lg transition-transform duration-300 transform hover:scale-105"
-                            onClick={() => handleImageClick(image.src)}
-                              loading="lazy"
-                        />
-                    </div>
-                ))}
+        <>
+            <div className="w-full mt-20">
+                <img src={galleryposter} className="w-full h-96 object-cover" alt="Gallery" />
             </div>
+            <div className="w-full py-12 flex flex-col items-center bg-gray-100">
 
-            {/* Modal using React Modal */}
-            <Modal
-                isOpen={selectedImage !== null}
-                onRequestClose={closeModal}
-                contentLabel="Image Modal"
-                className="fixed inset-0 flex justify-center items-center bg-transparent bg-opacity-60 z-20 mt-28"
-                overlayClassName="fixed inset-0 bg-black bg-opacity-60"
-            >
-                <div className="relative">
-                    {/* Add animation for image */}
-                    <motion.img
-                        src={selectedImage}
-                        alt="Full View"
-                        className="max-w-full max-h-screen object-contain rounded-lg"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.5 }}
-                    />
-                    {/* Close button with improved styling */}
-                    <button
-                        className="absolute top-4 right-4 p-3  text-white rounded-full bg-transparent hover:text-black transition-all duration-300"
-                        onClick={closeModal}
-                    >
-                        X
-                    </button>
 
+                <h2 className="text-3xl font-bold text-center mb-8">Gallery</h2>
+
+                {/* Gallery Container */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-6xl px-4">
+                    {images.map((image) => (
+                        <div key={image.id} className="flex justify-center">
+                            <img
+                                src={image.src}
+                                alt={image.alt}
+                                className="w-96 h-72 object-cover rounded-lg shadow-lg transition-transform duration-300 transform hover:scale-105"
+                                onClick={() => handleImageClick(image.src)}
+                                loading="lazy"
+                            />
+                        </div>
+                    ))}
                 </div>
-            </Modal>
-        </div>
+
+                {/* Modal using React Modal */}
+                <Modal
+                    isOpen={selectedImage !== null}
+                    onRequestClose={closeModal}
+                    contentLabel="Image Modal"
+                    className="fixed inset-0 flex justify-center items-center bg-transparent bg-opacity-60 z-20 mt-28"
+                    overlayClassName="fixed inset-0 bg-black bg-opacity-60"
+                >
+                    <div className="relative">
+                        {/* Add animation for image */}
+                        <motion.img
+                            src={selectedImage}
+                            alt="Full View"
+                            className="max-w-full max-h-screen object-contain rounded-lg"
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.5 }}
+                        />
+                        {/* Close button with improved styling */}
+                        <button
+                            className="absolute top-4 right-4 p-3  text-white rounded-full bg-transparent hover:text-black transition-all duration-300"
+                            onClick={closeModal}
+                        >
+                            X
+                        </button>
+
+                    </div>
+                </Modal>
+            </div>
+            <Footer />
+        </>
     );
 };
 

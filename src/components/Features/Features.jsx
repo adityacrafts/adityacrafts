@@ -1,58 +1,73 @@
-import  { useState } from "react";
+import { useState } from "react";
 import { FaPhoneAlt } from "react-icons/fa";
 import { BsFillPersonFill } from "react-icons/bs";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import { FiClock } from "react-icons/fi";
 import { RiMedalLine } from "react-icons/ri";
 import { motion } from "framer-motion";
-import Modal from "../Modal"; // Assuming Modal component is located in the same directory
 
 const featuresData = [
   {
     icon: <FaPhoneAlt className="text-yellow-400 text-5xl" />,
     title: "24/7 Service Support",
     description: "Reach us anytime for assistance with your needs.",
+    additionalPoints: [
+      "Round-the-clock availability ensures no delays.",
+      "Dedicated team to address your concerns promptly.",
+      "Support for all types of queries, big or small.",
+    ],
   },
   {
     icon: <BsFillPersonFill className="text-yellow-400 text-5xl" />,
     title: "Dedicated Managers",
     description: "Personalized guidance for a seamless experience.",
+    additionalPoints: [
+      "One-on-one assistance for your projects.",
+      "Experienced professionals to handle all requirements.",
+      "Tailored solutions to match your preferences.",
+    ],
   },
   {
     icon: <AiOutlineCheckCircle className="text-yellow-400 text-5xl" />,
-    title: "10-Year Warranty",
+    title: "5-Year Warranty",
     description: "Enjoy peace of mind with our long-term assurance.",
+    additionalPoints: [
+      "Covers manufacturing defects and material quality.",
+      "Hassle-free claims process for your convenience.",
+      "Ensures long-lasting satisfaction and trust.",
+    ],
   },
   {
     icon: <FiClock className="text-yellow-400 text-5xl" />,
     title: "Fast Delivery",
     description: "Timely delivery within 15 to 30 days guaranteed.",
+    additionalPoints: [
+      "Strict adherence to project timelines.",
+      "Efficient logistics to minimize delays.",
+      "Delivery updates to keep you informed.",
+    ],
   },
   {
     icon: <RiMedalLine className="text-yellow-400 text-5xl" />,
     title: "Exquisite Designs",
     description: "Crafted with precision and a touch of elegance.",
+    additionalPoints: [
+      "Unique and modern aesthetics for every project.",
+      "Attention to detail in every element of the design.",
+      "Blends functionality with artistic expression.",
+    ],
   },
 ];
 
 const Features = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalContent, setModalContent] = useState({ title: "", description: "" });
+  const [expandedFeatureIndex, setExpandedFeatureIndex] = useState(null);
 
-  const openModal = (title, description) => {
-    setModalContent({ title, description });
-    setIsModalOpen(true);
+  const toggleExpansion = (index) => {
+    setExpandedFeatureIndex((prevIndex) => (prevIndex === index ? null : index));
   };
-
-  const closeModal = () => setIsModalOpen(false);
 
   return (
     <div className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-16 px-6 sm:px-10 lg:px-20 overflow-hidden">
-      {/* Modal */}
-      <Modal isOpen={isModalOpen} onClose={closeModal} title={modalContent.title}>
-        <p>{modalContent.description}</p>
-      </Modal>
-
       {/* Background Glow Effects */}
       <div className="absolute inset-0 z-0">
         <div className="absolute w-72 h-72 bg-yellow-400 opacity-30 rounded-full blur-3xl top-10 left-10"></div>
@@ -91,9 +106,12 @@ const Features = () => {
             transition={{ delay: index * 0.2, duration: 0.5 }}
           >
             {/* Glowing Border */}
-            <div className="absolute inset-0 rounded-2xl border-2 border-transparent bg-gradient-to-r from-red-400 to-purple-500 opacity-0 hover:opacity-100 hover:animate-pulse"></div>
+            <div
+              className="absolute inset-0 rounded-2xl border-2 border-transparent bg-gradient-to-r from-red-400 to-purple-500 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:animate-pulse"
+              aria-hidden="true"
+            ></div>
             {/* Icon */}
-            <div className="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-red-400 to-purple-500 shadow-lg mx-auto mb-6">
+            <div className="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-red-400 to-purple-500 shadow-lg mx-auto mb-6 z-10">
               {feature.icon}
             </div>
             {/* Title */}
@@ -104,11 +122,29 @@ const Features = () => {
             <p className="text-gray-300 text-center mt-3">{feature.description}</p>
             {/* Read More Button */}
             <button
-              onClick={() => openModal(feature.title, feature.description)}
-              className="text-yellow-400 mt-4 mx-auto block"
+              onClick={() => toggleExpansion(index)}
+              className="text-yellow-400 mt-4 mx-auto block z-10"
             >
-              Read More
+              {expandedFeatureIndex === index ? "Show Less" : "Read More"}
             </button>
+            {/* Additional Points */}
+            {expandedFeatureIndex === index && (
+              <ul className="mt-4 space-y-2 text-gray-400 text-sm">
+                {feature.additionalPoints.map((point, idx) => (
+                  <motion.li
+                    key={idx}
+                    className="flex items-start"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.2, duration: 0.4 }}
+                  >
+                    <span className="mr-2 text-yellow-400">•</span>
+                    {point}
+                  </motion.li>
+                ))}
+              </ul>
+            )}
+
           </motion.div>
         ))}
       </div>

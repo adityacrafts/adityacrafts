@@ -24,6 +24,7 @@ import StudyTable from "./components/Services/StudyTable";
 import TvUnits from "./components/Services/TvUnits";
 import WallPaint from "./components/Services/WallPaint";
 import Wallpaper from "./components/Services/Wallpaper";
+import TermsAndConditions from "./components/TermsAndConditions/TermsAndConditions";
 
 const App = () => {
   // Function to scroll to the top of the page
@@ -68,6 +69,7 @@ const App = () => {
           <Route path="/services/tv-units" element={<TvUnits />} />
           <Route path="/services/wall-paint" element={<WallPaint />} />
           <Route path="/services/wallpaper" element={<Wallpaper />} />
+          <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
         </Routes>
 
         {/* WhatsApp Icon */}

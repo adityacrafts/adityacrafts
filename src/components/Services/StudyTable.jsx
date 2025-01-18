@@ -1,13 +1,16 @@
 import { motion } from "framer-motion"; // Import framer-motion
 import aboutus from "../../assets/studytable.jpg"; // Replace with your image path
+import Footer from "../Footer/Footer";
 
 const StudyTable = () => {
     return (
+      <>
+     
         <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
-            className="w-full py-12 px-4 mt-28"
+            className="w-full py-12 px-4 bg-gray-100 mt-20"
         >
             {/* About Us Section */}
             <div className="max-w-screen-xl mx-auto text-center lg:text-left flex flex-col lg:flex-row items-center lg:space-x-12">
@@ -41,6 +44,8 @@ const StudyTable = () => {
                 </motion.div>
             </div>
         </motion.div>
+        <Footer />
+      </>
     );
 };
 

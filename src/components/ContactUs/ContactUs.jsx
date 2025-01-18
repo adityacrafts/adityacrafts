@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -141,8 +142,14 @@ const ContactUs = () => {
             className="h-4 w-4 text-yellow-500 bg-transparent border-black rounded "
             required
           />
-          <label htmlFor="acceptTerms" className="text-lg xl:text-lg">
-            I accept the <span className="text-blue-500">terms and conditions</span>
+           <label
+            htmlFor="acceptTerms"
+            className="text-lg xl:text-lg"
+          >
+            I accept the{" "}
+            <Link to="/terms-and-conditions" className="text-blue-500 underline">
+              terms and conditions
+            </Link>
           </label>
         </div>
 
