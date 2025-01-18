@@ -46,7 +46,7 @@ const Banner = () => {
       </Slider>
 
       {/* Contact Us Form Section */}
-      <div className="lg:absolute lg:top-0 lg:right-0 w-full h-auto lg:w-[33%] xl:w-[30%] 2xl:w-[22%] p-3 lg:bg-white/60 lg:shadow-xl lg:shadow-2xl lg:transform lg:rounded-xl z-10 mt-10 lg:mt-[65px] m-4 xs:m-0 smd:m-0 lg:m-24 max-h-screen overflow-hidden">
+      <div className="lg:absolute lg:top-0 lg:right-0 w-full h-auto lg:w-[29%] xl:w-[27%] 2xl:w-[22%] p-3 lg:bg-white/60 lg:shadow-2xl lg:transform lg:rounded-xl z-10 mt-10 lg:mt-[65px] m-4 xs:m-0 smd:m-0 lg:m-24 max-h-screen overflow-hidden">
         <ContactUs />
       </div>
     </motion.div>

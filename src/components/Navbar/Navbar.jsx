@@ -4,39 +4,48 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const Navbar = () => {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false); // For mobile
 
   const handleGetQuoteClick = () => {
-    navigate("/gallery"); 
-    closeSidebar(); 
+    navigate("/gallery");
+    closeSidebar();
   };
 
   const handleNavigateToAboutUs = () => {
-    navigate("/about-us"); 
-    closeSidebar(); 
+    navigate("/about-us");
+    closeSidebar();
   };
 
   const handleLogoClick = () => {
-    navigate("/"); 
-    closeSidebar(); 
+    navigate("/");
+    closeSidebar();
   };
 
   const closeSidebar = () => setIsSidebarOpen(false);
 
   const handleServiceClick = (serviceName) => {
     const formattedServiceName = serviceName.toLowerCase().replace(/\s+/g, '-');
-    navigate(`/services/${formattedServiceName}`); 
-    setIsMobileServicesOpen(false); 
-    closeSidebar(); 
+    navigate(`/services/${formattedServiceName}`);
+    setIsMobileServicesOpen(false);
+    closeSidebar();
   };
-
-
 
   const toggleMobileServicesDropdown = () => {
     setIsMobileServicesOpen(!isMobileServicesOpen);
+  };
+
+  // Adjusted MouseEnter/Leave logic for Services dropdown
+  const handleMouseEnter = () => {
+    setIsServicesOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    setTimeout(() => {
+      setIsServicesOpen(false);
+    }, 200); // Delay before closing
   };
 
   return (
@@ -54,7 +63,7 @@ const Navbar = () => {
       </div>
 
       {/* Desktop Buttons */}
-      <div className="hidden lg:flex items-center relative px-4 sm:px-8 md:px-16 lg:px-16 ">
+      <div className="hidden lg:flex items-center relative px-4 sm:px-8 md:px-16 lg:px-16">
         <button
           onClick={handleNavigateToAboutUs}
           className="font-bold text-black-800 py-2 px-6 transition-colors hover:border-b-2 hover:border-orange-500"
@@ -64,8 +73,8 @@ const Navbar = () => {
 
         <div
           className="relative group"
-          onMouseEnter={() => setIsServicesOpen(true)}
-          onMouseLeave={() => setIsServicesOpen(false)}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         >
           <button className="font-bold text-black-800 py-2 px-6 transition-colors hover:border-b-2 hover:border-orange-500">
             Services
@@ -73,6 +82,8 @@ const Navbar = () => {
           {isServicesOpen && (
             <div
               className="absolute top-full mt-2 bg-white border w-auto ml-[-40px] rounded-lg"
+              onMouseEnter={handleMouseEnter} // Ensure the dropdown remains open when hovering over it
+              onMouseLeave={handleMouseLeave}
             >
               <ul className="py-2 w-64">
                 {[
