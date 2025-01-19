@@ -3,6 +3,7 @@ import img1 from "../../assets/img1.webp";
 import img2 from "../../assets/img2.webp";
 import img3 from "../../assets/img3.webp";
 import img4 from "../../assets/img4.webp";
+import { Helmet } from "react-helmet";
 
 const reasons = [
   {
@@ -47,6 +48,18 @@ const Steps = () => {
   };
 
   return (
+   <>
+    <Helmet>
+    <title> Aditya Crafts</title> {/* Set the title of the page */}
+    <meta
+      name="description"
+      content="Explore our achievements in the industry, including years of experience, happy customers, successful projects, and expert staff."
+    />
+    <meta
+      name="keywords"
+      content="experience, happy customers, successful projects, expert staff, business achievements, company statistics"
+    />
+  </Helmet>
     <motion.div
       id="tripinnov"
       className="relative w-full scroll-mt-40 md:mt-24 text-content px-4 sm:px-8 md:px-16 lg:px-36"
@@ -125,6 +138,7 @@ const Steps = () => {
         </div>
       </motion.section>
     </motion.div>
+   </>
   );
 };
 

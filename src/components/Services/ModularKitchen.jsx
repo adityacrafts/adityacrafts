@@ -1,11 +1,16 @@
 import { motion } from "framer-motion"; // Import framer-motion
 import aboutus from "../../assets/modularkitchen.jpg"; // Replace with your image path
 import Footer from "../Footer/Footer";
+import { Helmet } from "react-helmet";
 
 const ModularKitchen = () => {
     return (
         <>
-     
+            <Helmet>
+                <title>ModularKitchen Design - Your Website</title> {/* Set the title of the page */}
+                <meta name="description" content="Explore our modern and stylish ModularKitchen designs that cater to your needs and preferences. Let us transform your ModularKitchen into a relaxing and functional space." />
+                <meta name="keywords" content="ModularKitchen design, modern ModularKitchen, stylish ModularKitchen, home decor, ModularKitchen renovation, personal hygiene" />
+            </Helmet>
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -37,8 +42,9 @@ const ModularKitchen = () => {
                     >
                         <h2 className="text-4xl font-extrabold text-gray-800 mb-6">Modular Kitchen</h2>
                         <p className="text-xl">
-                            Our modular kitchen design services cater to the modern day household and cater to the changing trends and preferences. Our kitchens are designed to be functional, stylish, and cost-effective. With the use of modular units, our kitchens are easier to install, maintain and upgrade. A type of kitchen design where cabinets and shelves are pre-manufactured in standardized sizes and can be combined and arranged to fit the specific layout and storage needs of the kitchen. Modular kitchens help to maximize storage and organization, as well as providing a customized and stylish look for the kitchen.
+                            Our modular kitchen design services are tailored to meet the needs of modern households, reflecting the latest trends and preferences. Designed for functionality, style, and affordability, our kitchens use modular units that simplify installation, maintenance, and future upgrades. A modular kitchen consists of pre-manufactured cabinets and shelves in standardized sizes, which can be customized and arranged to suit your kitchen&apos;s layout and storage requirements. Modular kitchens optimize storage, enhance organization, and offer a sleek, personalized look that elevates your kitchen&apos;s appeal.
                         </p>
+
 
 
                     </motion.div>

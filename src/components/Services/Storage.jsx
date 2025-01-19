@@ -1,11 +1,17 @@
 import { motion } from "framer-motion"; // Import framer-motion
 import aboutus from "../../assets/storage.jpg"; // Replace with your image path
 import Footer from "../Footer/Footer";
+import { Helmet } from "react-helmet";
 
 const Storage = () => {
     return (
         <>
-       
+            <Helmet>
+                <title>Storage Design - Your Website</title> {/* Set the title of the page */}
+                <meta name="description" content="Explore our modern and stylish Storage designs that cater to your needs and preferences. Let us transform your Storage into a relaxing and functional space." />
+                <meta name="keywords" content="Storage design, modern Storage, stylish Storage, home decor, bathroom renovation, personal hygiene" />
+            </Helmet>
+
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -37,8 +43,9 @@ const Storage = () => {
                     >
                         <h2 className="text-4xl font-extrabold text-gray-800 mb-6">Storage & Wardrobe</h2>
                         <p className="text-xl">
-                            With our expert storage solutions, you will never have to compromise on space and organization again. Our wardrobes are designed to maximize space utilization and can be customized to suit your needs and style. Furniture designed for storage, such as a wardrobe cabinet or dresser, typically used for storing clothing and other personal items. Furniture designed for storage helps to keep a living space organized and clutter-free, and provides a convenient place to store personal items.
+                            With our expert storage solutions, you’ll never have to compromise on space or organization again. Our wardrobes are crafted to optimize space and can be fully customized to match your style and requirements. Designed for efficient storage, such as wardrobe cabinets or dressers, our furniture helps keep your living space organized and clutter-free. It provides a convenient and stylish place to store clothing and personal items, ensuring your home remains neat and functional.
                         </p>
+
 
 
                     </motion.div>

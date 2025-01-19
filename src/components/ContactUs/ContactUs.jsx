@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +12,8 @@ const ContactUs = () => {
     acceptTerms: false,
   });
 
+  const [errors, setErrors] = useState({});
+
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({
@@ -19,10 +22,42 @@ const ContactUs = () => {
     });
   };
 
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required.";
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.email.trim() || !emailRegex.test(formData.email)) {
+      newErrors.email = "A valid email is required.";
+    }
+
+    const phoneRegex = /^[6-9]\d{9}$/;
+    if (!formData.number.trim() || !phoneRegex.test(formData.number)) {
+      newErrors.number = "A valid 10-digit phone number starting with 6-9 is required.";
+    }
+
+    if (!formData.projectType) {
+      newErrors.projectType = "Please select a project type.";
+    }
+
+    if (!formData.acceptTerms) {
+      newErrors.acceptTerms = "You must accept the terms and conditions.";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Format the message
+    if (!validateForm()) {
+      return;
+    }
+
     const message = `Hello, I am interested in your services. Here are my details:
     Name: ${formData.name}
     Email: ${formData.email}
@@ -30,140 +65,159 @@ const ContactUs = () => {
     Project Name: ${formData.projectName}
     Project Type: ${formData.projectType}`;
 
-    // Encode the message and create the WhatsApp URL
     const whatsappURL = `https://wa.me/919019027647?text=${encodeURIComponent(message)}`;
-
-    // Open WhatsApp with the pre-filled message
     window.open(whatsappURL, "_blank");
   };
 
   return (
-    <div className="max-w-lg mx-auto px-4 py-4 xl:px-3 xl:py-1">
-      <h1 className="text-3xl xl:text-2xl lg:text-[0.867rem] lg:leading-[0.678rem] font-semibold text-center mb-4 xl:mb-6">
-        Meet Our Designers
-      </h1>
+    <>
+      <Helmet>
+        <title>Contact Us | Aditya Crafts</title>
+        <meta
+          name="description"
+          content="Get in touch with Aditya Crafts for personalized interior design services. Fill out the form to receive a free 3D design consultation."
+        />
+        <meta
+          name="keywords"
+          content="contact Aditya Crafts, interior design consultation, free 3D design, Aditya Crafts services"
+        />
+        <meta property="og:title" content="Contact Us | Aditya Crafts" />
+        <meta
+          property="og:description"
+          content="Get in touch with Aditya Crafts for personalized interior design services. Fill out the form to receive a free 3D design consultation."
+        />
+        <meta property="og:type" content="website" />
+      </Helmet>
 
-      <form onSubmit={handleSubmit} className="space-y-2 xl:space-y-4">
-        {/* Name field */}
-        <div className="flex flex-col">
-          <label htmlFor="name" className="block text-lg xl:text-lg font-medium">
-            Name
-          </label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            value={formData.name}
-            onChange={handleInputChange}
-            className="mt-2 xl:mt-1 px-4 py-2 xl:py-1 border-b bg-transparent border-black focus:outline-none focus:border-yellow-500"
-            required
-          />
-        </div>
+      <div className="max-w-lg mx-auto px-4 py-4 xl:px-3 xl:py-1">
+        <h1 className="text-3xl xl:text-2xl lg:text-[0.867rem] lg:leading-[0.678rem] font-semibold text-center mb-4 xl:mb-6">
+          Meet Our Designers
+        </h1>
 
-        {/* Email field */}
-        <div className="flex flex-col">
-          <label htmlFor="email" className="block text-lg xl:text-lg font-medium">
-            Email
-          </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            value={formData.email}
-            onChange={handleInputChange}
-            className="mt-2  xl:mt-1 px-4 py-2 xl:py-1  border-b bg-transparent border-black focus:outline-none focus:border-yellow-500"
-            required
-          />
-        </div>
+        <form onSubmit={handleSubmit} className="space-y-2 xl:space-y-4">
+          {/* Name field */}
+          <div className="flex flex-col">
+            <label htmlFor="name" className="block text-lg xl:text-lg font-medium">
+              Name
+            </label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              value={formData.name}
+              onChange={handleInputChange}
+              className="mt-2 xl:mt-1 px-4 py-2 xl:py-1 border-b bg-transparent border-black focus:outline-none focus:border-yellow-500"
+              required
+            />
+            {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
+          </div>
 
-        {/* Phone Number field */}
-        <div className="flex flex-col">
-          <label htmlFor="number" className="block text-lg xl:text-lg font-medium">
-            Phone Number
-          </label>
-          <input
-            id="number"
-            name="number"
-            type="tel"
-            value={formData.number}
-            onChange={handleInputChange}
-            className="mt-2  xl:mt-1 px-4 py-2 xl:py-1  border-b bg-transparent border-black focus:outline-none focus:border-yellow-500"
-            required
-          />
-        </div>
+          {/* Email field */}
+          <div className="flex flex-col">
+            <label htmlFor="email" className="block text-lg xl:text-lg font-medium">
+              Email
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              className="mt-2 xl:mt-1 px-4 py-2 xl:py-1 border-b bg-transparent border-black focus:outline-none focus:border-yellow-500"
+              required
+            />
+            {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+          </div>
 
-        {/* Project Name field */}
-        <div className="flex flex-col">
-          <label htmlFor="projectName" className="block text-lg xl:text-lg font-medium">
-            Project Name
-          </label>
-          <input
-            id="projectName"
-            name="projectName"
-            type="text"
-            value={formData.projectName}
-            onChange={handleInputChange}
-            className="mt-2  xl:mt-1 px-4 py-2 xl:py-1  border-b bg-transparent border-black focus:outline-none focus:border-yellow-500"
-            required
-          />
-        </div>
+          {/* Phone Number field */}
+          <div className="flex flex-col">
+            <label htmlFor="number" className="block text-lg xl:text-lg font-medium">
+              Phone Number
+            </label>
+            <input
+              id="number"
+              name="number"
+              type="tel"
+              value={formData.number}
+              onChange={handleInputChange}
+              className="mt-2 xl:mt-1 px-4 py-2 xl:py-1 border-b bg-transparent border-black focus:outline-none focus:border-yellow-500"
+              required
+            />
+            {errors.number && <p className="text-red-500 text-sm">{errors.number}</p>}
+          </div>
 
-        {/* Project Type Dropdown */}
-        <div className="flex flex-col">
-          <label htmlFor="projectType" className="block text-lg xl:text-lg font-medium">
-            Project Type
-          </label>
-          <select
-            id="projectType"
-            name="projectType"
-            value={formData.projectType}
-            onChange={handleInputChange}
-            className="mt-2  xl:mt-1 px-4 py-2 xl:py-1  border-b bg-transparent border-black focus:outline-none focus:border-yellow-500"
-            required
-          >
-            <option value="">Select Project Type</option>
-            <option value="apartment-2bhk">Apartment 2BHK</option>
-            <option value="apartment-3bhk">Apartment 3BHK</option>
-            <option value="apartment-4bhk">Apartment 4BHK</option>
-            <option value="villa">Villa</option>
-            <option value="renovation">Renovation</option>
-            <option value="independent-house">Independent House</option>
-          </select>
-        </div>
+          {/* Project Name field */}
+          <div className="flex flex-col">
+            <label htmlFor="projectName" className="block text-lg xl:text-lg font-medium">
+              Project Name
+            </label>
+            <input
+              id="projectName"
+              name="projectName"
+              type="text"
+              value={formData.projectName}
+              onChange={handleInputChange}
+              className="mt-2 xl:mt-1 px-4 py-2 xl:py-1 border-b bg-transparent border-black focus:outline-none focus:border-yellow-500"
+              required
+            />
+          </div>
 
-        {/* Terms and conditions checkbox */}
-        <div className="flex items-center space-x-2">
-          <input
-            id="acceptTerms"
-            name="acceptTerms"
-            type="checkbox"
-            checked={formData.acceptTerms}
-            onChange={handleInputChange}
-            className="h-4 w-4 text-yellow-500 bg-transparent border-black rounded "
-            required
-          />
-           <label
-            htmlFor="acceptTerms"
-            className="text-lg xl:text-lg"
-          >
-            I accept the{" "}
-            <Link to="/terms-and-conditions" className="text-blue-500 underline">
-              terms and conditions
-            </Link>
-          </label>
-        </div>
+          {/* Project Type Dropdown */}
+          <div className="flex flex-col">
+            <label htmlFor="projectType" className="block text-lg xl:text-lg font-medium">
+              Project Type
+            </label>
+            <select
+              id="projectType"
+              name="projectType"
+              value={formData.projectType}
+              onChange={handleInputChange}
+              className="mt-2 xl:mt-1 px-4 py-2 xl:py-1 border-b bg-transparent border-black focus:outline-none focus:border-yellow-500"
+              required
+            >
+              <option value="">Select Project Type</option>
+              <option value="apartment-2bhk">Apartment 2BHK</option>
+              <option value="apartment-3bhk">Apartment 3BHK</option>
+              <option value="apartment-4bhk">Apartment 4BHK</option>
+              <option value="villa">Villa</option>
+              <option value="renovation">Renovation</option>
+              <option value="independent-house">Independent House</option>
+            </select>
+            {errors.projectType && <p className="text-red-500 text-sm">{errors.projectType}</p>}
+          </div>
 
-        {/* Submit button */}
-        <div className="text-center">
-          <button
-            type="submit"
-            className="w-full mt-4 bg-yellow-500 text-white font-bold py-3 px-8 xl:py-4 xl:px-10 rounded-full hover:bg-yellow-600 transition-colors lg:mt-2 lg:text-[0.867rem] lg:p-[7px]"
-          >
-            Get Free 3D Design
-          </button>
-        </div>
-      </form>
-    </div>
+          {/* Terms and conditions checkbox */}
+          <div className="flex items-center space-x-2">
+            <input
+              id="acceptTerms"
+              name="acceptTerms"
+              type="checkbox"
+              checked={formData.acceptTerms}
+              onChange={handleInputChange}
+              className="h-4 w-4 text-yellow-500 bg-transparent border-black rounded"
+              required
+            />
+            <label htmlFor="acceptTerms" className="text-lg xl:text-lg">
+              I accept the{" "}
+              <Link to="/terms-and-conditions" className="text-blue-500 underline">
+                terms and conditions
+              </Link>
+            </label>
+          </div>
+          {errors.acceptTerms && <p className="text-red-500 text-sm">{errors.acceptTerms}</p>}
+
+          {/* Submit button */}
+          <div className="text-center">
+            <button
+              type="submit"
+              className="w-full mt-4 bg-yellow-500 text-white font-bold py-3 px-8 xl:py-4 xl:px-10 rounded-full hover:bg-yellow-600 transition-colors lg:mt-2 lg:text-[0.867rem] lg:p-[7px]"
+            >
+              Get Free 3D Design
+            </button>
+          </div>
+        </form>
+      </div>
+    </>
   );
 };
 

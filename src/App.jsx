@@ -25,6 +25,8 @@ import TvUnits from "./components/Services/TvUnits";
 import WallPaint from "./components/Services/WallPaint";
 import Wallpaper from "./components/Services/Wallpaper";
 import TermsAndConditions from "./components/TermsAndConditions/TermsAndConditions";
+import { Helmet } from "react-helmet";
+
 
 const App = () => {
   // Function to scroll to the top of the page
@@ -38,12 +40,30 @@ const App = () => {
   return (
     <Router>
       <main className="overflow-x-hidden relative">
+      <Helmet>
+      <title>Best Modern & Premium Interior Designer in Bangalore | AdityaCrafts</title>
+          <meta
+            name="description"
+            content="AdityaCrafts - Best interior designer in Bangalore. Explore modern & premium interior designs for kitchens, bedrooms, living rooms, dining rooms, wardrobes, bathrooms & more. Book your consultation today!"
+          />
+          <meta
+            name="keywords"
+            content="interior designer, furniture, home interior design, living room design, modular kitchen, and more"
+          />
+        </Helmet>
         <Navbar />
         <Routes>
           <Route
             path="/"
             element={
               <>
+               <Helmet>
+                  <title>Best Modern & Premium Interior Designer in Bangalore | AdityaCrafts</title>
+                  <meta
+                    name="description"
+                    content="AdityaCrafts - Best interior designer in Bangalore. Explore modern & premium interior designs for kitchens, bedrooms, living rooms, dining rooms, wardrobes, bathrooms & more. Book your consultation today!"
+                  />
+                </Helmet>
                 <Banner />
                 <Stats />
                 <Features />
@@ -96,3 +116,7 @@ const App = () => {
 };
 
 export default App;
+
+
+
+

@@ -1,5 +1,6 @@
 import Slider from 'react-slick';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async'; // Importing Helmet for SEO
 import poojaroom from "../../assets/poojaroom.jpeg";
 import walk from "../../assets/walk.jpg";
 import kitchen from "../../assets/kitchen.jpg";
@@ -23,7 +24,7 @@ const InteriorDesignSlider = () => {
   const settings = {
     dots: false,
     infinite: true,
-    autoplay:true,
+    autoplay: true,
     speed: 500,
     slidesToShow: 4, // Default number of slides to show
     slidesToScroll: 1,
@@ -44,39 +45,51 @@ const InteriorDesignSlider = () => {
   };
 
   return (
-    <div className="w-full mx-auto px-6 py-8">
-      <h1 className="text-3xl font-bold text-center mb-12 text-gray-800">
-        Modern Home Interior Designs
-      </h1>
-      <div className="relative w-full">
-        <Slider {...settings} className="interior-slider w-full">
-          {designs.map((design) => (
-            <motion.div
-              key={design.id}
-              className="px-4" // Added consistent padding
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="relative group overflow-hidden rounded-xl shadow-lg">
-                <img
-                  src={design.image}
-                  alt={design.title}
-                  className="w-full h-auto md:h-[438px] object-cover rounded-t-xl"
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-50 transition duration-300"></div>
-                <div className="absolute bottom-0 left-0 right-0 py-4 px-6 bg-gradient-to-t from-black to-transparent text-center">
-                  <h3 className="text-white font-semibold text-lg">
-                    {design.title}
-                  </h3>
+    <>
+      <Helmet>
+        <title>Modern Home Interior Designs | Explore Stunning Interiors</title>
+        <meta name="description" content="Browse through a collection of modern home interior designs, including living rooms, kitchens, bedrooms, and more." />
+        <meta name="keywords" content="modern home interior, interior design, home decor, living room, kitchen, bedroom, furniture" />
+        <meta property="og:title" content="Modern Home Interior Designs | Explore Stunning Interiors" />
+        <meta property="og:description" content="Browse through a collection of modern home interior designs, including living rooms, kitchens, bedrooms, and more." />
+        <meta property="og:image" content={poojaroom} />
+        <meta property="og:url" content="https://www.adityacrafts.com" />
+      </Helmet>
+
+      <div className="w-full mx-auto px-6 py-8">
+        <h1 className="text-3xl font-bold text-center mb-12 text-gray-800">
+          Modern Home Interior Designs
+        </h1>
+        <div className="relative w-full">
+          <Slider {...settings} className="interior-slider w-full">
+            {designs.map((design) => (
+              <motion.div
+                key={design.id}
+                className="px-4" // Added consistent padding
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <div className="relative group overflow-hidden rounded-xl shadow-lg">
+                  <img
+                    src={design.image}
+                    alt={design.title}
+                    className="w-full h-80 object-cover rounded-t-xl" // Fixed height for all images
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-50 transition duration-300"></div>
+                  <div className="absolute bottom-0 left-0 right-0 py-4 px-6 bg-gradient-to-t from-black to-transparent text-center">
+                    <h3 className="text-white font-semibold text-lg">
+                      {design.title}
+                    </h3>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </Slider>
+              </motion.div>
+            ))}
+          </Slider>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

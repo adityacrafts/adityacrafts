@@ -1,11 +1,17 @@
 import { motion } from "framer-motion"; // Import framer-motion
 import aboutus from "../../assets/bathroom.jpg"; // Replace with your image path
 import Footer from "../Footer/Footer";
+import { Helmet } from "react-helmet"; // Import Helmet for SEO
 
 const Bathroom = () => {
   return (
     <>
- 
+      <Helmet>
+        <title>Bathroom Design - Your Website</title> {/* Set the title of the page */}
+        <meta name="description" content="Explore our modern and stylish bathroom designs that cater to your needs and preferences. Let us transform your bathroom into a relaxing and functional space." />
+        <meta name="keywords" content="bathroom design, modern bathroom, stylish bathroom, home decor, bathroom renovation, personal hygiene" />
+      </Helmet>
+
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -37,10 +43,10 @@ const Bathroom = () => {
           >
             <h2 className="text-4xl font-extrabold text-gray-800 mb-6">BATHROOM</h2>
             <p className="text-xl">
-              Our bathroom design services cater to the modern day household and cater to the changing trends and preferences. Our bathroom designs are functional, stylish, and cost-effective and are designed to meet your specific needs and budget. A room in a house or building designated for washing, bathing, and using the toilet.
+              Our bathroom design services are tailored to meet the needs of modern households, reflecting the latest trends and preferences. We focus on creating functional, stylish, and budget-friendly designs that are customized to suit your specific requirements. Whether it&apos;s for relaxation, practicality, or both, we ensure each design is a perfect fit for your lifestyle.
             </p>
             <p className="text-xl">
-              A bathroom is a room in a building that is used for personal hygiene activities, such as bathing, showering, and washing. Bathrooms typically include a sink, toilet, and shower or bathtub, and can also include additional features such as a bidet, sauna, or jacuzzi. Bathrooms can be designed to be functional, relaxing, and aesthetically pleasing.
+              A bathroom is a dedicated space within a building for personal hygiene activities, such as bathing, showering, and washing. It typically includes essential fixtures like a sink, toilet, and shower or bathtub. Additional features like a bidet, sauna, or jacuzzi can also be incorporated, providing both functionality and a sense of relaxation while enhancing the overall aesthetic appeal.
             </p>
 
           </motion.div>

@@ -1,11 +1,17 @@
 import { motion } from "framer-motion"; // Import framer-motion
 import aboutus from "../../assets/modern-living.jpg"; // Replace with your image path
 import Footer from "../Footer/Footer";
+import { Helmet } from "react-helmet";
 
 const SpaceSaving = () => {
     return (
         <>
-      
+            <Helmet>
+                <title>SpaceSaving Design - Your Website</title> {/* Set the title of the page */}
+                <meta name="description" content="Explore our modern and stylish SpaceSaving designs that cater to your needs and preferences. Let us transform your SpaceSaving into a relaxing and functional space." />
+                <meta name="keywords" content="SpaceSaving design, modern SpaceSaving, stylish SpaceSaving, home decor, SpaceSaving renovation, personal hygiene" />
+            </Helmet>
+
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -37,7 +43,7 @@ const SpaceSaving = () => {
                     >
                         <h2 className="text-4xl font-extrabold text-gray-800 mb-6">Space Saving Furniture</h2>
                         <p className="text-xl">
-                            Space saving furniture is the need of the hour in today&apos;s world. We offer a range of space saving furniture options that are both functional and stylish. From wall beds to foldable tables and chairs, we have got you covered. Furniture designed to maximize the use of space in a room, such as foldable or multi-functional furniture. Space-saving furniture is important in smaller homes or apartments where limited space is a concern, as it helps to make the most of the available space.
+                            In today’s world, space-saving furniture is essential. We offer a variety of functional and stylish space-saving solutions to suit your needs. From wall beds to foldable tables and chairs, we have everything to help optimize your space. Designed to maximize room usage, our space-saving furniture is perfect for smaller homes or apartments where every inch counts. These versatile, multi-functional pieces help you make the most of limited space without compromising on style or comfort.
                         </p>
 
 

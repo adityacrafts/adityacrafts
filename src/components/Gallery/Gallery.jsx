@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Modal from "react-modal";
 import { motion } from "framer-motion"; // Import framer-motion for animation
+import { Helmet } from "react-helmet-async"; // Import Helmet for SEO
 import gallery from "../../assets/gallery.jpeg";
 import gallery1 from "../../assets/gallery1.jpeg";
 import gallery2 from "../../assets/gallery2.jpeg";
@@ -66,12 +67,20 @@ const Gallery = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Gallery | Stunning Collection of Images</title>
+                <meta name="description" content="Explore our stunning gallery of beautiful images showcasing exquisite designs and moments." />
+                <meta name="keywords" content="gallery, images, beautiful designs, photography, stunning moments" />
+                <meta property="og:title" content="Gallery | Stunning Collection of Images" />
+                <meta property="og:description" content="Explore our stunning gallery of beautiful images showcasing exquisite designs and moments." />
+                <meta property="og:image" content={galleryposter} />
+                <meta property="og:url" content="https://www.adityacrafts.com/gallery" />
+            </Helmet>
+
             <div className="w-full mt-20">
                 <img src={galleryposter} className="w-full h-96 object-cover" alt="Gallery" />
             </div>
             <div className="w-full py-12 flex flex-col items-center bg-gray-100">
-
-
                 <h2 className="text-3xl font-bold text-center mb-8">Gallery</h2>
 
                 {/* Gallery Container */}
@@ -83,7 +92,7 @@ const Gallery = () => {
                                 alt={image.alt}
                                 className="w-96 h-72 object-cover rounded-lg shadow-lg transition-transform duration-300 transform hover:scale-105"
                                 onClick={() => handleImageClick(image.src)}
-                                loading="lazy"
+                                loading="lazy" // Lazy load images
                             />
                         </div>
                     ))}
@@ -114,7 +123,6 @@ const Gallery = () => {
                         >
                             X
                         </button>
-
                     </div>
                 </Modal>
             </div>

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
 import Slider from "react-slick"; // Import slick slider
+import { Helmet } from "react-helmet-async";
 import factory from "../../assets/factory.jpeg";
 import factory1 from "../../assets/factory1.jpeg";
 import factory2 from "../../assets/factory2.jpeg";
@@ -43,6 +44,26 @@ const Factory = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Aditya Crafts</title>
+        <meta
+          name="description"
+          content="Explore the state-of-the-art factory facilities of Aditya Crafts. Witness our innovative processes and superior craftsmanship through a visual journey."
+        />
+        <meta
+          name="keywords"
+          content="Aditya Crafts factory, state-of-the-art facilities, superior craftsmanship, innovative manufacturing, interior design production"
+        />
+        <meta property="og:title" content="Aditya Crafts" />
+        <meta
+          property="og:description"
+          content="Explore the state-of-the-art factory facilities of Aditya Crafts. Witness our innovative processes and superior craftsmanship through a visual journey."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="/assets/factory.jpeg" />
+        <meta property="og:url" content="https://www.adityacrafts.com/factory" />
+      </Helmet>
+
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -67,7 +88,7 @@ const Factory = () => {
               <img
                 src={image}
                 alt={alt}
-                className="w-full  xs:w-[100%]  h-48 sm:h-80 lg:h-96 object-cover transition-transform duration-300 ease-in-out"
+                className="w-full xs:w-[100%] h-48 sm:h-80 lg:h-96 object-cover transition-transform duration-300 ease-in-out"
                 style={{
                   // Apply styles based on whether the image is in the center or not
                   transform:

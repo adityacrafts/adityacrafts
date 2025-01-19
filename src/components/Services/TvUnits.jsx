@@ -1,11 +1,16 @@
 import { motion } from "framer-motion"; // Import framer-motion
 import aboutus from "../../assets/tvunit.jpeg"; // Replace with your image path
 import Footer from "../Footer/Footer";
+import { Helmet } from "react-helmet";
 
 const TvUnits = () => {
     return (
         <>
-           
+            <Helmet>
+                <title>TvUnits Design - Your Website</title> {/* Set the title of the page */}
+                <meta name="description" content="Explore our modern and stylish TvUnits designs that cater to your needs and preferences. Let us transform your TvUnits into a relaxing and functional space." />
+                <meta name="keywords" content="TvUnits design, modern TvUnits, stylish TvUnits, home decor, TvUnits renovation, personal hygiene" />
+            </Helmet>
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -37,8 +42,9 @@ const TvUnits = () => {
                     >
                         <h2 className="text-4xl font-extrabold text-gray-800 mb-6">TV Units</h2>
                         <p className="text-xl">
-                            Our TV units are designed to blend in seamlessly with your living room decor while also providing ample storage space. Our units are stylish and customizable, designed to match your style and preference. Furniture specifically designed to hold and display televisions, often with additional storage for media components and accessories. TV units provide a designated space for the television, help to keep the living space organized, and often offer additional storage for media components and accessories.
+                            Our TV units are crafted to complement your living room decor while offering generous storage space. Stylish and customizable, these units are designed to reflect your unique style and preferences. Specifically built to hold and display televisions, our units often include additional storage for media components and accessories. They not only provide a dedicated space for your TV but also help keep your living area organized while offering convenient storage solutions for your entertainment essentials.
                         </p>
+
 
 
                     </motion.div>

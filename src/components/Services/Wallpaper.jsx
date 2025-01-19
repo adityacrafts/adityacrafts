@@ -1,11 +1,16 @@
 import { motion } from "framer-motion"; // Import framer-motion
 import aboutus from "../../assets/wallpaper.jpg"; // Replace with your image path
 import Footer from "../Footer/Footer";
+import { Helmet } from "react-helmet";
 
 const Wallpaper = () => {
     return (
         <>
-           
+            <Helmet>
+                <title>Wallpaper Design - Your Website</title> {/* Set the title of the page */}
+                <meta name="description" content="Explore our modern and stylish Wallpaper designs that cater to your needs and preferences. Let us transform your Wallpaper into a relaxing and functional space." />
+                <meta name="keywords" content="Wallpaper design, modern Wallpaper, stylish Wallpaper, home decor, Wallpaper renovation, personal hygiene" />
+            </Helmet>
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -37,11 +42,12 @@ const Wallpaper = () => {
                     >
                         <h2 className="text-4xl font-extrabold text-gray-800 mb-6">Wallpaper</h2>
                         <p className="text-xl">
-                            Our wallpaper services offer a range of options to enhance the aesthetics of your space. From traditional wallpaper designs to modern and contemporary styles, our wallpaper options are designed to suit your taste and budget. A decorative covering for the walls of a room, typically made of paper or vinyl, used to enhance the appearance of a room.
+                            Our wallpaper services offer a wide variety of options to elevate the aesthetics of your space. Whether you prefer traditional patterns or modern, contemporary styles, we have wallpaper solutions designed to match your taste and budget. Made from materials like paper or vinyl, our wallpapers are crafted to enhance the look and feel of any room.
                         </p>
                         <p className="text-xl">
-                            Wallpaper is a decorative material that is used to cover the walls of a room. It can come in a variety of patterns, colors, and textures, and can be used to add interest and texture to a room. Wallpaper can be used to create a specific theme or mood, and can also be used to cover up imperfections in a wall.
+                            Wallpaper is a versatile decorative material used to cover the walls of a room. Available in a range of patterns, colors, and textures, it adds visual interest and depth to any space. Perfect for creating a specific theme or atmosphere, wallpaper can also be used to conceal wall imperfections, making it both a practical and stylish choice for your home.
                         </p>
+
 
 
                     </motion.div>

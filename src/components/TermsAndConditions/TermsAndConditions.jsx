@@ -1,6 +1,20 @@
+import { Helmet } from "react-helmet";
 
 const TermsAndConditions = () => {
   return (
+   <>
+    <Helmet>
+    <title>Aditya Crafts</title> {/* Set the title of the page */}
+    <meta
+      name="description"
+      content="Explore our achievements in the industry, including years of experience, happy customers, successful projects, and expert staff."
+    />
+    <meta
+      name="keywords"
+      content="experience, happy customers, successful projects, expert staff, business achievements, company statistics"
+    />
+  </Helmet>
+   
     <div className="min-h-screen bg-gray-50 px-4 sm:px-6 py-10 mt-16">
       <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-6 sm:p-8">
         <h1 className="text-2xl sm:text-3xl font-semibold text-gray-800 mb-6">
@@ -73,6 +87,7 @@ const TermsAndConditions = () => {
         </ul>
       </div>
     </div>
+   </>
   );
 };
 

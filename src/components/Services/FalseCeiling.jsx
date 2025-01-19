@@ -1,10 +1,16 @@
 import { motion } from "framer-motion"; // Import framer-motion
 import aboutus from "../../assets/Wooden-ceiling.jpg"; // Replace with your image path
 import Footer from "../Footer/Footer";
+import { Helmet } from "react-helmet";
 
 const FalseCeiling = () => {
     return (
         <>
+            <Helmet>
+                <title>FalseCeiling Design - Your Website</title> {/* Set the title of the page */}
+                <meta name="description" content="Explore our modern and stylish FalseCeiling designs that cater to your needs and preferences. Let us transform your FalseCeiling into a relaxing and functional space." />
+                <meta name="keywords" content="FalseCeiling design, modern FalseCeiling, stylish FalseCeiling, home decor, FalseCeiling renovation, personal hygiene" />
+            </Helmet>
 
             <motion.div
                 initial={{ opacity: 0 }}
@@ -37,8 +43,9 @@ const FalseCeiling = () => {
                     >
                         <h2 className="text-4xl font-extrabold text-gray-800 mb-6">False Ceiling</h2>
                         <p className="text-xl">
-                            Our false ceiling designs are designed to add a touch of elegance and style to your home or office. From contemporary designs to traditional styles, our false ceilings are designed to suit your preference and budget. A suspended ceiling that is installed below the actual ceiling of a room, used to hide electrical and mechanical services, to improve acoustics, or to create a decorative effect. False ceilings help to improve the acoustics of a room, hide unsightly electrical and mechanical services, and can be used to create a decorative effect.
+                            Our false ceiling designs are crafted to bring a touch of sophistication and style to your home or office. Whether you prefer modern aesthetics or traditional charm, our false ceilings are tailored to match your taste and budget. A suspended ceiling, installed below the room&apos;s actual ceiling, serves to conceal electrical and mechanical services, enhance acoustics, and create a visually striking effect. False ceilings not only improve sound quality and hide unsightly installations but also add a decorative element to any space.
                         </p>
+
 
 
                     </motion.div>

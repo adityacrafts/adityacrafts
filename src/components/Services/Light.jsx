@@ -1,11 +1,16 @@
 import { motion } from "framer-motion"; // Import framer-motion
 import aboutus from "../../assets/ligharead1.jpg"; // Replace with your image path
 import Footer from "../Footer/Footer";
+import { Helmet } from "react-helmet";
 
 const Light = () => {
     return (
         <>
-    
+            <Helmet>
+                <title>Light Design - Your Website</title> {/* Set the title of the page */}
+                <meta name="description" content="Explore our modern and stylish Light designs that cater to your needs and preferences. Let us transform your Light into a relaxing and functional space." />
+                <meta name="keywords" content="Light design, modern Light, stylish Light, home decor, Light renovation, personal hygiene" />
+            </Helmet>
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -37,8 +42,9 @@ const Light = () => {
                     >
                         <h2 className="text-4xl font-extrabold text-gray-800 mb-6">Light</h2>
                         <p className="text-xl">
-                            Lighting is an essential element of interior design and we offer a range of lighting options to suit your style and preference. From ceiling lights to wall lights and table lamps, our lighting options are designed to enhance the aesthetics of your space. A form of electromagnetic radiation that is visible to the human eye and has properties such as direction, color, and brightness, used to illuminate an area or an object. Light is essential for visibility and to create a welcoming and functional living environment. Different types of lighting can be used for different purposes, such as task lighting, accent lighting, and ambient lighting.
+                            Lighting plays a crucial role in interior design, and we offer a variety of lighting solutions to complement your style and needs. From ceiling lights and wall sconces to table lamps, our lighting options are designed to elevate the ambiance of your space. Light, a form of electromagnetic radiation visible to the human eye, has characteristics such as direction, color, and brightness, and is essential for illuminating spaces and enhancing their visual appeal. The right lighting not only improves visibility but also creates a warm and functional living environment. Different lighting types, such as task, accent, and ambient lighting, serve distinct purposes to transform any room.
                         </p>
+
 
 
                     </motion.div>
