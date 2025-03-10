@@ -66,10 +66,10 @@ const App = () => {
                 </Helmet>
                 <Banner />
                 <Stats />
-                <Features />
+                <InteriorDesignSlider />
                 <Banner2 />
                 <Steps />
-                <InteriorDesignSlider />
+                <Features />
                 <Cards />
                 <Factory />
                 <Footer />
